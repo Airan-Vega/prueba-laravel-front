@@ -11,9 +11,9 @@ export const getComments = async () => {
   }
 };
 
-export const createComment = async () => {
+export const createComment = async (body: any) => {
   try {
-    const response = await api.post("/comments");
+    const response = await api.post("/comments", { ...body });
 
     return response.data;
   } catch (error) {
@@ -22,9 +22,9 @@ export const createComment = async () => {
   }
 };
 
-export const updateComment = async (id: string) => {
+export const updateComment = async (id: string, body: any) => {
   try {
-    const response = await api.put(`/comments/${id}`);
+    const response = await api.put(`/comments/${id}`, { ...body });
 
     return response.data;
   } catch (error) {
@@ -35,7 +35,7 @@ export const updateComment = async (id: string) => {
 
 export const deleteComment = async (id: string) => {
   try {
-    const response = await api.put(`/comments/${id}`);
+    const response = await api.delete(`/comments/${id}`);
 
     return response.data;
   } catch (error) {

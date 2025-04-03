@@ -11,9 +11,9 @@ export const getUsers = async () => {
   }
 };
 
-export const createUser = async () => {
+export const createUser = async (body: any) => {
   try {
-    const response = await api.post("/users");
+    const response = await api.post("/users", { ...body });
 
     return response.data;
   } catch (error) {
@@ -22,9 +22,9 @@ export const createUser = async () => {
   }
 };
 
-export const updateUser = async (id: string) => {
+export const updateUser = async (id: string, body: any) => {
   try {
-    const response = await api.put(`/users/${id}`);
+    const response = await api.put(`/users/${id}`, { ...body });
 
     return response.data;
   } catch (error) {
@@ -35,7 +35,7 @@ export const updateUser = async (id: string) => {
 
 export const deleteUser = async (id: string) => {
   try {
-    const response = await api.put(`/users/${id}`);
+    const response = await api.delete(`/users/${id}`);
 
     return response.data;
   } catch (error) {
